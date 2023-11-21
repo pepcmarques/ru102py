@@ -35,6 +35,7 @@ def readings(metric_dao) -> Generator[List[MeterReading], None, None]:
 
 def _test_insert_and_retrieve(readings: List[MeterReading],
                               metric_dao: MetricDaoRedis, limit: int):
+
     for reading in readings:
         metric_dao.insert(reading)
 
@@ -49,16 +50,13 @@ def _test_insert_and_retrieve(readings: List[MeterReading],
 
 
 # Challenge #2
-@pytest.mark.skip("Remove for challenge #2")
 def test_small(metric_dao, readings):
     _test_insert_and_retrieve(readings, metric_dao, 1)
 
 
-@pytest.mark.skip("Remove for challenge #2")
 def test_one_day(metric_dao, readings):
     _test_insert_and_retrieve(readings, metric_dao, 60 * 24)
 
 
-@pytest.mark.skip("Remove for challenge #2")
 def test_multiple_days(metric_dao, readings):
     _test_insert_and_retrieve(readings, metric_dao, 60 * 70)
